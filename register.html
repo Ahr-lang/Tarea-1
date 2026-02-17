@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Inicio</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header class="site-header">
       <div class="container">
-        <h1 class="logo">Tarea</h1>
+        <h1 class="logo">Mi Proyecto</h1>
         <nav class="main-nav">
           <a href="index.html">Inicio</a>
           <a href="register.html">Registro</a>
@@ -21,25 +21,37 @@
     </header>
 
     <main class="container">
-      <section class="hero">
-        <h2>Bienvenido</h2>
-        <p>Esta es la página principal. Usa la navegación para explorar las páginas interiores.</p>
-        <p><a class="btn" href="register.html">Crear cuenta</a></p>
-      </section>
+      <h2>Formulario de registro</h2>
+      <p>Rellena los campos para crear una cuenta.</p>
 
-      <section class="info">
-        <h3>Ingreso rápido</h3>
-        <form class="form-login" action="hola.html">
+      <form class="form-register" action="#" method="post">
+        <label>Nombre completo
+          <input class="controls" type="text" name="nombre" placeholder="Nombre completo">
+        </label>
+
+        <label>Correo electrónico
+          <input class="controls" type="email" name="email" placeholder="correo@ejemplo.com">
+        </label>
+
+        <label>Usuario
           <input class="controls" type="text" name="usuario" placeholder="Usuario">
+        </label>
+
+        <label>Contraseña
           <input class="controls" type="password" name="contrasena" placeholder="Contraseña">
-          <input class="buttons" type="submit" value="Ingresar">
-        </form>
-      </section>
+        </label>
+
+        <label>Confirmar contraseña
+          <input class="controls" type="password" name="contrasena2" placeholder="Confirmar contraseña">
+        </label>
+
+        <input class="buttons" type="submit" value="Registrarse">
+      </form>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-        <p>© 2026 Mi Proyecto — Hecho para la tarea</p>
+        <p>Hecho para la tarea</p>
       </div>
     </footer>
   </body>
