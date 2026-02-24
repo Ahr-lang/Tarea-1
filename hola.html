@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Hola</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo">Mi Proyecto</h1>
-      <nav class="main-nav">
-        <a href="index.html">Inicio</a>
-        <a href="register.html">Registro</a>
-        <a href="acerca.html">Acerca</a>
-        <a href="servicios.html">Servicios</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hola</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="shared-header"></div>
 
-  <main class="container">
-    <h2>Hola</h2>
-    <p id="welcome-user">Has ingresado.</p>
-  </main>
+    <main class="container">
+      <h2>Hola</h2>
+      <p id="welcome-user">Has ingresado.</p>
+    </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>2026 Mi Proyecto - Hecho para la tarea</p>
-    </div>
-  </footer>
-  <script src="auth.js"></script>
-</body>
+    <div id="shared-footer"></div>
+    <script src="layout.js"></script>
+    <script src="auth.js"></script>
+  </body>
 </html>

@@ -18,6 +18,28 @@ function writeUsers(users) {
   localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
 }
 
+function readSession() {
+  const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return null;
+    return parsed;
+  } catch (error) {
+    console.error("No se pudo leer la sesion:", error);
+    return null;
+  }
+}
+
+function createToken() {
+  if (window.crypto && typeof window.crypto.randomUUID === "function") {
+    return window.crypto.randomUUID();
+  }
+
+  return `tk_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+}
+
 function setupRegister() {
   const form = document.querySelector(".form-register");
   if (!form) return;
@@ -26,8 +48,12 @@ function setupRegister() {
     event.preventDefault();
 
     const nombre = (form.elements.namedItem("nombre")?.value || "").trim();
-    const email = (form.elements.namedItem("email")?.value || "").trim().toLowerCase();
-    const usuario = (form.elements.namedItem("usuario")?.value || "").trim().toLowerCase();
+    const email = (form.elements.namedItem("email")?.value || "")
+      .trim()
+      .toLowerCase();
+    const usuario = (form.elements.namedItem("usuario")?.value || "")
+      .trim()
+      .toLowerCase();
     const contrasena = form.elements.namedItem("contrasena")?.value || "";
     const contrasena2 = form.elements.namedItem("contrasena2")?.value || "";
 
@@ -37,32 +63,25 @@ function setupRegister() {
     }
 
     if (contrasena !== contrasena2) {
-      alert("Las contraseñas no coinciden.");
+      alert("Las contrasenas no coinciden.");
       return;
     }
 
     const users = readUsers();
     const exists = users.some((u) => u.usuario === usuario || u.email === email);
-
     if (exists) {
       alert("Ese usuario o correo ya existe.");
       return;
     }
 
-    const newUser = {
-      nombre,
-      email,
-      usuario,
-      contrasena
-    };
-
+    const newUser = { nombre, email, usuario, contrasena };
     users.push(newUser);
     writeUsers(users);
 
     console.log("Usuario registrado en JSON:", newUser);
     console.log("Listado actual en JSON:", users);
 
-    alert("Registro exitoso. Ahora puedes iniciar sesión.");
+    alert("Registro exitoso. Ahora puedes iniciar sesion.");
     form.reset();
     window.location.href = "index.html";
   });
@@ -75,26 +94,34 @@ function setupLogin() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const usuario = (form.elements.namedItem("usuario")?.value || "").trim().toLowerCase();
+    const usuario = (form.elements.namedItem("usuario")?.value || "")
+      .trim()
+      .toLowerCase();
     const contrasena = form.elements.namedItem("contrasena")?.value || "";
 
     if (!usuario || !contrasena) {
-      alert("Ingresa usuario y contraseña.");
+      alert("Ingresa usuario y contrasena.");
       return;
     }
 
     const users = readUsers();
-    const found = users.find((u) => u.usuario === usuario && u.contrasena === contrasena);
-
+    const found = users.find(
+      (u) => u.usuario === usuario && u.contrasena === contrasena
+    );
     if (!found) {
-      alert("Credenciales inválidas.");
+      alert("Credenciales invalidas.");
       return;
     }
 
-    localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify({
-      nombre: found.nombre,
-      usuario: found.usuario
-    }));
+    localStorage.setItem(
+      SESSION_STORAGE_KEY,
+      JSON.stringify({
+        nombre: found.nombre,
+        usuario: found.usuario,
+        token: createToken(),
+        createdAt: new Date().toISOString()
+      })
+    );
 
     window.location.href = "hola.html";
   });
@@ -104,18 +131,10 @@ function setupHello() {
   const target = document.getElementById("welcome-user");
   if (!target) return;
 
-  const raw = localStorage.getItem(SESSION_STORAGE_KEY);
-  if (!raw) return;
+  const session = readSession();
+  if (!session?.nombre) return;
 
-  try {
-    const user = JSON.parse(raw);
-    if (user?.nombre) {
-      target.textContent = `Has ingresado como ${user.nombre}.`;
-      return;
-    }
-  } catch (error) {
-    console.error("No se pudo leer la sesión:", error);
-  }
+  target.textContent = `Has ingresado como ${session.nombre}.`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {

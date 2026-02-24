@@ -7,22 +7,11 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header class="site-header">
-      <div class="container">
-        <h1 class="logo">Mi Proyecto</h1>
-        <nav class="main-nav">
-          <a href="index.html">Inicio</a>
-          <a href="register.html">Registro</a>
-          <a href="acerca.html">Acerca</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="contacto.html">Contacto</a>
-        </nav>
-      </div>
-    </header>
+    <div id="shared-header"></div>
 
     <main class="container">
       <h2>Contacto</h2>
-      <p>Formulario de contacto (estático):</p>
+      <p>Formulario de contacto (estatico):</p>
       <form class="form-contact" action="#" method="post">
         <label>Nombre
           <input class="controls" type="text" name="nombre" placeholder="Nombre">
@@ -31,16 +20,13 @@
           <input class="controls" type="email" name="email" placeholder="correo@ejemplo.com">
         </label>
         <label>Mensaje
-          <textarea class="controls" name="mensaje" placeholder="Escribe tu mensaje aquí"></textarea>
+          <textarea class="controls" name="mensaje" placeholder="Escribe tu mensaje aqui"></textarea>
         </label>
         <input class="buttons" type="submit" value="Enviar">
       </form>
     </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>Tarea</p>
-      </div>
-    </footer>
+    <div id="shared-footer"></div>
+    <script src="layout.js"></script>
   </body>
 </html>

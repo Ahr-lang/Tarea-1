@@ -7,18 +7,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header class="site-header">
-      <div class="container">
-        <h1 class="logo">Mi Proyecto</h1>
-        <nav class="main-nav">
-          <a href="index.html">Inicio</a>
-          <a href="register.html">Registro</a>
-          <a href="acerca.html">Acerca</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="contacto.html">Contacto</a>
-        </nav>
-      </div>
-    </header>
+    <div id="shared-header"></div>
 
     <main class="container">
       <h2>Formulario de registro</h2>
@@ -29,7 +18,7 @@
           <input class="controls" type="text" name="nombre" placeholder="Nombre completo">
         </label>
 
-        <label>Correo electrónico
+        <label>Correo electronico
           <input class="controls" type="email" name="email" placeholder="correo@ejemplo.com">
         </label>
 
@@ -37,23 +26,20 @@
           <input class="controls" type="text" name="usuario" placeholder="Usuario">
         </label>
 
-        <label>Contraseña
-          <input class="controls" type="password" name="contrasena" placeholder="Contraseña">
+        <label>Contrasena
+          <input class="controls" type="password" name="contrasena" placeholder="Contrasena">
         </label>
 
-        <label>Confirmar contraseña
-          <input class="controls" type="password" name="contrasena2" placeholder="Confirmar contraseña">
+        <label>Confirmar contrasena
+          <input class="controls" type="password" name="contrasena2" placeholder="Confirmar contrasena">
         </label>
 
         <input class="buttons" type="submit" value="Registrarse">
       </form>
     </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>Hecho para la tarea</p>
-      </div>
-    </footer>
+    <div id="shared-footer"></div>
+    <script src="layout.js"></script>
     <script src="auth.js"></script>
   </body>
 </html>

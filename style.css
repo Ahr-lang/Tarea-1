@@ -3,9 +3,13 @@ body{margin:0;color:#222;background:#f7f7f7}
 .container{max-width:900px;margin:0 auto;padding:16px}
 .site-header{background:#0a74da;color:#fff}
 .site-header .container{display:flex;align-items:center;justify-content:space-between}
+.site-header-content{gap:12px;flex-wrap:wrap}
 .logo{margin:0;padding:12px 0;font-size:1.2rem}
 .main-nav a{color:#fff;margin-left:12px;text-decoration:none}
 .main-nav a:hover{text-decoration:underline}
+.user-session{display:flex;align-items:center;gap:8px;font-size:.85rem}
+.logout-btn{background:#fff;color:#0a74da;border:none;border-radius:4px;padding:6px 10px;cursor:pointer}
+.logout-btn:hover{opacity:.9}
 .hero{background:#fff;padding:24px;margin-top:16px;border-radius:6px}
 .info{background:#fff;padding:16px;margin-top:16px;border-radius:6px}
 .form-login,.form-register,.form-contact{display:flex;flex-direction:column;gap:8px;max-width:420px}
@@ -18,3 +22,9 @@ body{margin:0;color:#222;background:#f7f7f7}
 .btn{display:inline-block;background:#0a74da;color:#fff;padding:8px 12px;border-radius:4px;text-decoration:none}
 label{font-size:0.95rem}
 textarea.controls{min-height:100px}
+
+@media (max-width: 700px){
+  .site-header-content{flex-direction:column;align-items:flex-start}
+  .main-nav a{margin-left:0;margin-right:10px}
+  .user-session{flex-wrap:wrap}
+}
